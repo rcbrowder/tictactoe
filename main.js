@@ -1,7 +1,8 @@
 // Variables
 var turn = true; // Keeps track of whose turn it is
 var buttons = document.getElementsByClassName('space');
-var btnValue = []
+var btnValue = [];
+var whoWins = 0;
 var winCombos = [
     // Horizontals
   '0,1,2',
@@ -16,7 +17,8 @@ var winCombos = [
   // Diagonals
   '0,4,8',
   '2,4,6']
-var whoWins = 0;
+
+
 // Wait for page to load before allowing user to click buttons
 
 document.onreadystatechange = function() {
@@ -28,6 +30,7 @@ document.onreadystatechange = function() {
     }
 }
 
+document.getElementById('reset').addEventListener('click',reset);
 
 function ButtonLogic(evt) {
     var selectedSpace = evt.target.innerHTML;
@@ -53,9 +56,10 @@ function winner() {
         if (btnValue[i] == 'X') {
             xInd.push(i);
         }
-        if (btnValue[i] == 'O') {
+        else if (btnValue[i] == 'O') {
             oInd.push(i);
         }
+
         if (winCombos.indexOf(xInd.join()) != -1) {
             whoWins = 1;
             break;
@@ -71,20 +75,8 @@ function winner() {
     if (whoWins == 2) {
         alert("Player2 wins!");
     }
-    if (btnValue.indexOf('') == -1) {
-        alert("We have a tie!");
-    }
 }
 
-
-
-    // for (var j = 0; j < winCombos.length; j++) {
-    //     var xInd = [];
-    //     // Check every combo
-    //     for (var n = 0; n < 3; n++) {
-    //         // Get array of 'X' indicies
-    //
-    //     }
-    //     // Check if it matches winCombos
-    //
-    // }
+function reset() {
+    location.reload();
+}

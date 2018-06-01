@@ -3,9 +3,14 @@ button.space {
     border: none;
     height: 200px;
     width: 200px;
+    font-size: 9em;
 }
 
 .board {
     margin: auto;
     width: 600px;
+}
+
+.header {
+    
 }
