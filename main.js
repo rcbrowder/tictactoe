@@ -1,5 +1,5 @@
 // Variables
-var turn = true; // Keeps track of whose turn it is
+var turn = 1; // Keeps track of whose turn it is
 var buttons = document.getElementsByClassName('space');
 var btnValue = [];
 var whoWins = 0;
@@ -36,13 +36,13 @@ function ButtonLogic(evt) {
     var selectedSpace = evt.target.innerHTML;
     if (selectedSpace == '') {
         console.log('You made a move');
-        if (turn == true) {
+        if (turn == 1 || turn % 2 == 1) {
             evt.target.innerHTML = 'X';
         }
         else {
             evt.target.innerHTML = 'O';
         }
-        turn = !turn;
+        turn++;
     }
     winner();
 }
@@ -60,11 +60,11 @@ function winner() {
             oInd.push(i);
         }
 
-        if (winCombos.indexOf(xInd.join()) != -1) {
+        if (winCombos.indexOf(xInd.sort().join()) != -1) {
             whoWins = 1;
             break;
         }
-        if (winCombos.indexOf(oInd.join()) != -1) {
+        if (winCombos.indexOf(oInd.sort().join()) != -1) {
             whoWins = 2;
             break;
         }
@@ -75,8 +75,16 @@ function winner() {
     if (whoWins == 2) {
         alert("Player2 wins!");
     }
+    if (turn == 11) {
+        alert("We have a tie!")
+    }
 }
 
 function reset() {
     location.reload();
+}
+
+
+for (var i = 0, winCombos.length; i++) {
+    var 
 }
