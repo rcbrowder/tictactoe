@@ -1,0 +1,11 @@
+button.space {
+    border-radius: 0;
+    border: none;
+    height: 200px;
+    width: 200px;
+}
+
+.board {
+    margin: auto;
+    width: 600px;
+}
